@@ -47,6 +47,17 @@ nix-build -A default
 nix-build -A test             # NixOS VM test against a mock API
 ```
 
+## Packages
+
+```sh
+cd packaging/arch && makepkg -si                        # Arch
+rpmbuild -bb --build-in-place packaging/rpm/jev-pam.spec  # Fedora
+cp -r packaging/debian . && dpkg-buildpackage -b         # Debian, Ubuntu
+cd packaging/alpine && abuild -r                        # Alpine
+```
+
+Debian has no Zig 0.16 package. Use one from ziglang.org and pass `-d`.
+
 ## Demo
 
 ```sh

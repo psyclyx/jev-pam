@@ -7,3 +7,7 @@ zig-out/
 packaging/arch/src/
 packaging/arch/pkg/
 packaging/arch/*.pkg.tar.*
+/debian/
+packaging/alpine/src/
+packaging/alpine/pkg/
+redhat-linux-build/

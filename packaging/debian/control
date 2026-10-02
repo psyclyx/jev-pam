@@ -1,0 +1,15 @@
+Source: jev-pam
+Section: admin
+Priority: optional
+Maintainer: psyclyx <me@psyclyx.xyz>
+Build-Depends: debhelper-compat (= 13), libpam0g-dev, zig0.16
+Standards-Version: 4.7.2
+Homepage: https://github.com/psyclyx/jev-pam
+Rules-Requires-Root: no
+
+Package: jev-pam
+Architecture: amd64 arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}, ca-certificates
+Description: PAM module that asks Jev
+ Sends the details of a login attempt to Jev, TypeSafe AI's decision model,
+ and lets the user in if Jev says yes.

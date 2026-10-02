@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/architecture.mk
+
+# Ubuntu's zig0.16 package installs zig0.16; a ziglang.org build is just zig.
+ZIG ?= $(or $(shell command -v zig0.16),zig)
+ZIG_FLAGS = --release=safe -Dcpu=baseline \
+	--cache-dir $(CURDIR)/.zig-cache --global-cache-dir $(CURDIR)/.zig-global-cache
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(ZIG) build $(ZIG_FLAGS)
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	$(ZIG) build test $(ZIG_FLAGS)
+endif
+
+override_dh_auto_install:
+	DESTDIR=$(CURDIR)/debian/jev-pam $(ZIG) build install $(ZIG_FLAGS) \
+		--prefix /usr --prefix-lib-dir /usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_clean:
+	rm -rf .zig-cache .zig-global-cache zig-out

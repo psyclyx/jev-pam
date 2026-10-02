@@ -1,0 +1,28 @@
+# Maintainer: psyclyx <me@psyclyx.xyz>
+pkgname=jev-pam
+pkgver=0.1.0
+pkgrel=0
+pkgdesc="PAM module that asks Jev"
+url="https://github.com/psyclyx/jev-pam"
+arch="x86_64 aarch64"
+license="MIT"
+depends="ca-certificates"
+makedepends="zig linux-pam-dev"
+builddir="$startdir/../.."
+
+_zig() {
+	zig build "$@" --release=safe -Dcpu=baseline \
+		--cache-dir "$srcdir/zig-cache" --global-cache-dir "$srcdir/zig-global-cache"
+}
+
+build() {
+	_zig --prefix "$srcdir/out"
+}
+
+check() {
+	_zig test
+}
+
+package() {
+	DESTDIR="$pkgdir" _zig install --prefix /usr
+}
