@@ -9,8 +9,7 @@ pub const Config = struct {
     endpoint: []const u8 = "https://api.typesafe.ai/v1/systemone",
     model: []const u8 = "jev-latest",
     timeout: Io.Duration = .fromSeconds(10),
-    /// The yes/no question put to Jev. Defaults depend on whether the user
-    /// was asked something.
+    /// The yes/no question put to Jev. Derived from the attempt if null.
     instructions: ?[]const u8 = null,
 };
 
