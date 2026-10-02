@@ -35,9 +35,6 @@ The module returns `PAM_SUCCESS` if Jev's probability meets the threshold and
 `PAM_AUTH_ERR` if it doesn't. If Jev can't be reached in time, it returns
 `PAM_AUTHINFO_UNAVAIL`.
 
-`zig build run -- [options] USER` makes the same request from the command line,
-using `TYPESAFE_API_KEY`.
-
 ## Building
 
 ```sh
