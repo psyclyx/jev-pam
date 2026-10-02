@@ -43,4 +43,5 @@ The module returns `PAM_SUCCESS` if Jev's probability meets the threshold and
 ```sh
 zig build                     # zig-out/{lib/security/pam_jev.so,bin/jev}
 zig build test
+nix-build -A default
 ```
