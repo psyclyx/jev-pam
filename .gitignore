@@ -1,0 +1,9 @@
+.direnv/
+.secrets.env
+result
+result-*
+.zig-cache/
+zig-out/
+packaging/arch/src/
+packaging/arch/pkg/
+packaging/arch/*.pkg.tar.*

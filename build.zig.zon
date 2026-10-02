@@ -1,0 +1,7 @@
+.{
+    .name = .jev_pam,
+    .version = "0.1.0",
+    .fingerprint = 0x147b77f43406a9e6,
+    .minimum_zig_version = "0.16.0",
+    .paths = .{ "build.zig", "build.zig.zon", "src" },
+}
