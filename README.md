@@ -46,3 +46,13 @@ zig build test
 nix-build -A default
 nix-build -A test             # NixOS VM test against a mock API
 ```
+
+## Demo
+
+```sh
+TYPESAFE_API_KEY=... $(nix-build -A demo)/bin/jev-pam-demo
+```
+
+This boots a VM in which Jev alone decides console login, ssh
+(`ssh -p 2222 alice@localhost`) and sudo. The users are alice and bob, and
+neither has a password.

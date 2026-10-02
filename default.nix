@@ -24,5 +24,6 @@ rec {
   default = packages.jev-pam;
   inherit overlay;
   shell = finalPkgs.callPackage ./nix/shell.nix { };
+  demo = finalPkgs.callPackage ./nix/demo.nix { };
   test = finalPkgs.testers.runNixOSTest ./nix/test;
 }
