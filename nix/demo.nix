@@ -62,8 +62,6 @@ let
           ++ lib.optional (service == "sudo") "send_cmdline";
         };
       }) questions;
-
-      environment.systemPackages = [ jev-pam ];
     }
   );
 in

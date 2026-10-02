@@ -35,17 +35,16 @@ The module returns `PAM_SUCCESS` if Jev's probability meets the threshold and
 `PAM_AUTH_ERR` if it doesn't. If Jev can't be reached in time, it returns
 `PAM_AUTHINFO_UNAVAIL`.
 
-`jev [options] USER` makes the same request from the command line. It reads
-`TYPESAFE_API_KEY`.
+`zig build run -- [options] USER` makes the same request from the command line,
+using `TYPESAFE_API_KEY`.
 
 ## Building
 
 ```sh
-zig build                     # zig-out/{lib/security/pam_jev.so,bin/jev}
+zig build                     # zig-out/lib/security/pam_jev.so
 zig build test
 nix-build -A default
 nix-build -A test             # NixOS VM test against a mock API
-cd packaging/arch && makepkg -si
 ```
 
 ## Demo

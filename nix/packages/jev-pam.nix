@@ -24,6 +24,5 @@ stdenv.mkDerivation {
     description = "PAM module that asks Jev";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
-    mainProgram = "jev";
   };
 }
