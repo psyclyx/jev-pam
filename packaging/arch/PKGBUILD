@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="PAM module that asks Jev"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=('pam' 'ca-certificates')
+depends=('glibc' 'pam' 'ca-certificates')
 makedepends=('zig>=0.16')
 install=jev-pam.install
 source=()

@@ -23,7 +23,9 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
         .link_libc = true,
     });
-    b.installArtifact(b.addExecutable(.{ .name = "jev", .root_module = cli }));
+    const exe = b.addExecutable(.{ .name = "jev", .root_module = cli });
+    exe.pie = true;
+    b.installArtifact(exe);
 
     const test_step = b.step("test", "Run unit tests");
     for ([_]*std.Build.Module{ module, cli }) |m| {
