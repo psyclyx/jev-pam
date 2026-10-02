@@ -45,6 +45,7 @@ zig build                     # zig-out/{lib/security/pam_jev.so,bin/jev}
 zig build test
 nix-build -A default
 nix-build -A test             # NixOS VM test against a mock API
+cd packaging/arch && makepkg -si
 ```
 
 ## Demo

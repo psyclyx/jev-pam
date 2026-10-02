@@ -1,0 +1,31 @@
+# Maintainer: psyclyx
+pkgname=jev-pam
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="PAM module that asks Jev"
+arch=('x86_64' 'aarch64')
+license=('MIT')
+depends=('pam' 'ca-certificates')
+makedepends=('zig>=0.16')
+install=jev-pam.install
+source=()
+
+# Builds from this checkout rather than a source tarball.
+_root="$(realpath "$startdir/../..")"
+
+build() {
+  cd "$_root"
+  zig build --release=safe --prefix "$srcdir/out" \
+    --cache-dir "$srcdir/zig-cache" --global-cache-dir "$srcdir/zig-global-cache"
+}
+
+check() {
+  cd "$_root"
+  zig build test --cache-dir "$srcdir/zig-cache" --global-cache-dir "$srcdir/zig-global-cache"
+}
+
+package() {
+  install -Dm755 "$srcdir/out/lib/security/pam_jev.so" "$pkgdir/usr/lib/security/pam_jev.so"
+  install -Dm755 "$srcdir/out/bin/jev" "$pkgdir/usr/bin/jev"
+  install -Dm644 "$_root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

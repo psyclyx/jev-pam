@@ -1,0 +1,4 @@
+post_install() {
+  echo '==> Put a TypeSafe API key in /etc/jev/api-key (mode 400), then add'
+  echo '==> pam_jev.so to a service in /etc/pam.d. See the README.'
+}
